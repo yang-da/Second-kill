@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .product{  border: 3px solid orange; display: inline-block; margin-left: 400px; width: 400px;  }
+        .red{  color: red; font-size: 25px;  }
+    </style>
+</head>
+<body>
+
+
+<div class="product" style="text-align: center;">
+    <img src="jquery案例-百叶窗/images/0.jpg" alt="" width="150"/>
+    <p>绝世好男人</p>
+    <span>原价：<del>99亿</del></span>
+    <br/>
+    <span>现价：<span class="red">100块</span></span>
+    <br/>
+    <span>距离抢购结束还有：</span><span id="time"></span>
+</div>
+
+
+<script>
+
+
+    var stopTime = new Date(3000,11,14,0,0,0);
+    var nowTime = new Date();
+    var jianGe = (stopTime-nowTime)/1000;
+
+
+    var day = Math.floor(jianGe/60/60/24);
+    var hour = Math.floor(jianGe/60/60%24);
+    var min = Math.floor(jianGe/60%60);
+    var sec = Math.floor(jianGe%60);
+    var showTime = day+'天'+hour+'小时'+min+'分钟'+sec+'秒';
+    document.getElementById('time').innerText = showTime;
+
+
+    //定时器：每隔多长事件执行一次某函数
+    //setInterval(func,ms)
+    var timer = setInterval(function () {
+
+
+        var nowTime = new Date();
+        var jianGe = (stopTime-nowTime)/1000;
+
+
+        var day = Math.floor(jianGe/60/60/24);
+        var hour = Math.floor(jianGe/60/60%24);
+        var min = Math.floor(jianGe/60%60);
+        var sec = Math.floor(jianGe%60);
+
+
+        var showTime = day+'天'+hour+'小时'+min+'分钟'+sec+'秒';
+
+
+        document.getElementById('time').innerText = showTime;
+
+
+        if(day==0&&hour==0&&min==0&&sec==0){
+            //关闭定时器
+            clearInterval(timer);
+        }
+
+
+    },1000);
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
